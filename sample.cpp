@@ -1,6 +1,7 @@
 using namespace std;
 #include <iostream>
 #include <string.h>
+#include <cstdlib> //this enables to clear screen and pause it
 
 //structure declaration for items categories
 
@@ -100,11 +101,14 @@ int main()
 
      cout<<"\n\t1. Register new items.\n\t2. Sell items.\n\t3. Checking stack availability.\n\t4. Total no. of sales.\n\t5. Profit.\n\t6. statistical report.\n";
      cin>>choice1;
+     
+     system ("cls"); //clears screen
         switch(choice1){
     case 1:
         {
             cout<<"\n\tChoose Item Category\n\t1. Food\n\t2. Beverage\n\t3. Personal Care\n\t4. Household supply\n\t5. Others\n";
             cin>>choice2;
+            system ("cls"); //clears screen
             switch(choice2)
             {
             case 1:
