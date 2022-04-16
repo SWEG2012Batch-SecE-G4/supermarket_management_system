@@ -5,7 +5,7 @@ using namespace std;
 
 //structure declaration for items categories
 
-struct items{   char name[20];
+struct items{   char name[30];
                 float cost;
                 float price;
                 float amount;
@@ -18,8 +18,9 @@ items register_F ()
 {
     items f;
 
-        cout<<"Enter NAME: ";
-        gets(f.name);
+		cout<<"\nEnter NAME: ";
+		cin.ignore();
+        cin.get(f.name,20);
         cout<<"Enter COST: ";
         cin>>f.cost;
         cout<<"Enter PRICE: ";
@@ -34,8 +35,9 @@ items register_B ()
 {
     items b;
 
-        cout<<"Enter NAME: ";
-        gets(b.name);
+        cout<<"\nEnter NAME: ";
+       	cin.ignore();
+		cin.get(b.name,30);
         cout<<"Enter COST: ";
         cin>>b.cost;
         cout<<"Enter PRICE: ";
@@ -50,8 +52,9 @@ items register_P()
 {
     items p;
 
-        cout<<"Enter NAME: ";
-        gets(p.name);
+        cout<<"\nEnter NAME: ";
+       	cin.ignore();
+       	cin.get(p.name,30);
         cout<<"Enter COST: ";
         cin>>p.cost;
         cout<<"Enter PRICE: ";
@@ -66,9 +69,10 @@ items register_H ()
 {
     items h;
 
-        cout<<"Enter NAME: ";
-        gets(h.name);
-        cout<<"Enter COST: ";
+        cout<<"\nEnter NAME: ";
+    	cin.ignore();
+        cin.get(h.name,30);
+		cout<<"Enter COST: ";
         cin>>h.cost;
         cout<<"Enter PRICE: ";
         cin>>h.price;
@@ -82,9 +86,10 @@ items register_O()
 {
     items o;
 
-        cout<<"Enter NAME: ";
-        gets(o.name);
-        cout<<"Enter COST: ";
+        cout<<"\nEnter NAME: ";
+    	cin.ignore();
+        cin.get(o.name,30);
+		cout<<"Enter COST: ";
         cin>>o.cost;
         cout<<"Enter PRICE: ";
         cin>>o.price;
@@ -93,30 +98,37 @@ items register_O()
 
     return o;
 }
+
+//Begining of main () function 
 int main()
 {
     items food[20], beverage[20], personalCare[20], household_suplly[20], others[20];
      int old= 0;    int New;
      int choice1, choice2;
 
-     cout<<"\n\t1. Register new items.\n\t2. Sell items.\n\t3. Checking stack availability.\n\t4. Total no. of sales.\n\t5. Profit.\n\t6. statistical report.\n";
-     cin>>choice1;
-     
+tryagain:	
+     	cout<<"\n\t1. Register new items.\n\t2. Sell items.\n\t3. Checking stack availability.\n\t4. Total no. of sales.\n\t5. Profit.\n\t6. statistical report.\n";
+     	cin>>choice1;
+
      system ("cls"); //clears screen
+
         switch(choice1){
     case 1:
         {
-            cout<<"\n\tChoose Item Category\n\t1. Food\n\t2. Beverage\n\t3. Personal Care\n\t4. Household supply\n\t5. Others\n";
+	tryagain2:
+			cout<<"\n\tChoose Item Category\n\t1. Food\n\t2. Beverage\n\t3. Personal Care\n\t4. Household supply\n\t5. Others\n";
             cin>>choice2;
             system ("cls"); //clears screen
+            
             switch(choice2)
             {
             case 1:
                 cout<<"\n\tHow many items do you want to register?\n";
                 cin>>New;
                 for(int i = old; i < New; i++)
-                {
-                    food[i] = register_F();
+                {	
+					cout<<"\nItem "<<i+1;
+					food[i] = register_F();
                 }
                 break;
             case 2:
@@ -124,6 +136,7 @@ int main()
                 cin>>New;
                 for(int i = old; i < New; i++)
                 {
+                	cout<<"\nItem "<<i+1;
                     beverage[i] = register_B();
                 }
                 break;
@@ -132,6 +145,7 @@ int main()
                 cin>>New;
                 for(int i = old; i < New; i++)
                 {
+                	cout<<"\nItem "<<i+1;
                     personalCare[i] = register_P();
                 }
                 break;
@@ -140,6 +154,7 @@ int main()
                 cin>>New;
                 for(int i = old; i < New; i++)
                 {
+                	cout<<"\nItem "<<i+1;
                     household_suplly[i] = register_H();
                 }
                 break;
@@ -151,7 +166,11 @@ int main()
                     others[i] = register_O();
                 }
                 break;
-            }
+                
+           		default:
+        	cout<<"You entered wrong number!\n\tTry again.";
+        	goto tryagain2;
+		    }
         }
         break;
     case 2:
@@ -169,6 +188,11 @@ int main()
     case 6:
 
         break;
-        }
+        
+        default:
+        cout<<"You entered wrong number!\n\tTry again.";
+        goto tryagain;
+	    }
+       
     return 0;
 }
